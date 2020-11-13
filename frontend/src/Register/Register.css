@@ -1,0 +1,15 @@
+.btn_register{
+    display: inline-block;
+    background-color: rgb(4, 162, 235);
+    color: rgb(255, 255, 255);
+    margin-top: 0px;
+    padding: 1rem 2rem;
+    align-self: center; 
+    min-width: 9rem;
+    box-shadow:  0px 9px 5px 0px  rgba(36, 36, 36, 0.85);
+    border-radius: 5px;
+    font-size: 1.5rem;
+    transition: all .2s ease-in-out;
+  }
+  
+  

@@ -1,0 +1,60 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Lora:wght@500&display=swap'); */
+
+
+/* Navigation Bar */
+.quizly {
+    font-size: 2.5rem;
+    margin-left: 25px;
+    color:  rgb(6, 255, 243);
+    font-family: 'Kaushan Script', cursive;
+    transition: all .2s ease-in-out;
+  }
+  
+  .quizly:hover{
+    transform: scale(1.02); 
+  }
+  
+  nav {
+    box-shadow: -2px 8px 15px 0px rgba(36, 36, 36, 0.85);
+    position: fixed;
+    width: 100%;
+    margin-bottom: 70px;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    border-top: 0;
+  }
+  
+  .nav-link{
+    cursor: pointer;
+    font-weight: 500;
+    font-family: 'Raleway', sans-serif;
+    color: antiquewhite;
+    
+  }
+  
+  .nav-link:hover{
+    color: rgb(6, 255, 243);
+  }
+  
+  .navbar-nav { 
+    padding-right: 50px;
+    padding-left: 25px;
+    margin-left: auto; 
+  }
+  
+  nav > a:hover{
+    color: rgb(6, 255, 243);
+    
+  }
+
+  .navbar-toggler:focus {
+   
+    box-shadow: 0 0 0 0.1rem  rgb(6, 255, 243);
+}
+
+
+
+
+
+  
