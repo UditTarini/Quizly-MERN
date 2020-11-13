@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import "../App.css";
 import "./Register.css";
 import NavigationBar from "../Commons/NavigationBar";
-import {register} from "../Commons/Utils/Authhelper";
+import {register} from "../Commons/Utils/authHelper";
 
 function Register() {
   const [values, setValues] = useState({

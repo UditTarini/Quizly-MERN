@@ -1,7 +1,7 @@
 import React, {Fragment} from "react";
 import {Link, withRouter} from "react-router-dom";
 
-import {signout, isAuthenticated} from "./Utils/Authhelper";
+import {signout, isAuthenticated} from "./Utils/authHelper";
 import "./Common.css";
 
 const NavigationBar = ({history}) => {

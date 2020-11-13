@@ -6,7 +6,7 @@ import {
   login,
   authenticate,
   isAuthenticated,
-} from "../Commons/Utils/Authhelper";
+} from "../Commons/Utils/authHelper";
 
 import {useEffect, useState} from "react";
 

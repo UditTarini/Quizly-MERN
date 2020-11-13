@@ -1,7 +1,4 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Lora:wght@500&display=swap'); */
 
-
-/* Navigation Bar */
 .quizly {
     font-size: 2.5rem;
     margin-left: 25px;
@@ -49,7 +46,6 @@
   }
 
   .navbar-toggler:focus {
-   
     box-shadow: 0 0 0 0.1rem  rgb(6, 255, 243);
 }
 

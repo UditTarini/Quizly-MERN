@@ -1,32 +1,28 @@
 import React from "react";
 import NavigationBar from "../Commons/NavigationBar";
 import TopicCard from "./TopicCard";
+import {topicsData} from "../Commons/Utils/data";
 
-const Quizes = () => {
+const Topics = () => {
   return (
     <>
       <NavigationBar />
+      {console.log(topicsData)}
       <div className="container  mt-5">
         <div className="row">
-          <div className="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-6 mb-4">
-            <TopicCard />
-          </div>
-          <div className="col-xl-2 col-lg-4 col-md-4  col-sm-6 col-6">
-            <TopicCard />
-          </div>{" "}
-          <div className="col-xl-2 col-lg-4 col-md-4  col-sm-6 col-6">
-            <TopicCard />
-          </div>{" "}
-          <div className="col-xl-2 col-lg-4 col-md-4  col-sm-6 col-6">
-            <TopicCard />
-          </div>{" "}
-          <div className="col-xl-2 col-lg-4 col-md-4  col-sm-6 col-6">
-            <TopicCard />
-          </div>
+          {topicsData.map((data, index) => (
+            <div
+              key={index}
+              className="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-4"
+              // onClick={play(data.id)}
+            >
+              <TopicCard id={data.id} icon={data.icon} name={data.name} />
+            </div>
+          ))}
         </div>
       </div>
     </>
   );
 };
 
-export default Quizes;
+export default Topics;
