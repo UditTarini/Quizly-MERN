@@ -7,7 +7,7 @@ const Topics = () => {
   return (
     <>
       <NavigationBar />
-      {console.log(topicsData)}
+
       <div className="container  mt-5">
         <div className="row">
           {topicsData.map((data, index) => (

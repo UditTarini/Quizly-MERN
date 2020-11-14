@@ -1,10 +1,19 @@
-import React from "react";
+import React, {useState} from "react";
+import {Link, Redirect} from "react-router-dom";
+import {loadQuiz} from "../Commons/Utils/apiHelper";
 import Play from "../Play";
+import {useHistory} from "react-router-dom";
+
 import "./Topics.css";
 
 const TopicCard = ({icon, name, id}) => {
+  var history = useHistory();
   const play = (id) => {
-    alert(id);
+    loadQuiz(id).then((data) =>
+      history.push("/play", {
+        quizData: data.results,
+      })
+    );
   };
 
   return (

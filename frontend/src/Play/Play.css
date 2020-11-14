@@ -2,11 +2,10 @@
     height: auto;
     padding-bottom: 40px;
     border: 0;
-    
+    background:#3f3f3f;    
     font-size: 1.1rem;
     color: aliceblue;
     margin-bottom: 3rem;
-    background:#3f3f3f;
     outline: none;
     -webkit-box-shadow: 1px 15px 20px 3px  rgba(24, 24, 24, 0.59); 
   box-shadow: 1px 15px 20px 3px rgba(24, 24, 24, 0.59);
@@ -31,6 +30,14 @@
   color: #ffffff;
   font-weight: 600;
   background-image: linear-gradient(to right, rgb(0, 152, 240), rgb(0, 225, 181));
+  
+ }
+
+  .play-board{
+    background:#3f3f3f;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  
   }
   
   .play-top > span{
