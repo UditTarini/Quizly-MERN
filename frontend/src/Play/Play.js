@@ -5,10 +5,14 @@ import NavigationBar from "../Commons/NavigationBar";
 const Play = (props) => {
   const [data, setData] = useState([]);
   const [options, setOptions] = useState([]);
+  const [ansStatus, setAnsStatus] = useState("");
+  const [score, setScore] = useState(0);
+  const [qNumber, setqnumber] = useState(1);
+  const [time, setTime] = useState(20);
 
   useEffect(() => {
-    // setData(props.location.state.quizData);
     setData(props.location.state.quizData);
+
     _setOptions(props.location.state.quizData);
   }, []);
 
@@ -35,28 +39,54 @@ const Play = (props) => {
     return txt.value;
   };
 
-  const optionView = (index, option) => {
+  const optionView = (index, option, correctAns) => {
     return (
-      <div key={index} className="play-option  mt-4">
+      <li
+        onClick={() => handleOptionClick(option, correctAns)}
+        key={index}
+        className={`play-option ${ansStatus} mt-4`}
+      >
         {option}
-      </div>
+      </li>
     );
+  };
+
+  const handleOptionClick = (option, correctAns) => {
+    if (option === correctAns) {
+      setAnsStatus("correct");
+      setScore(score + 5);
+
+      delayNextQ();
+    } else {
+      setAnsStatus("wrong");
+      setScore(score - 2);
+
+      delayNextQ();
+    }
+  };
+
+  const delayNextQ = () => {
+    setTimeout(() => {
+      setqnumber(qNumber + 1);
+      setAnsStatus("");
+    }, 1500);
   };
 
   const quizBorad = (index, item) => {
     return (
       <div className="play-board" key={index}>
         <p className="play-question m-4">{decodeHtml(item.question)}</p>
-        <div className=" m-4">
+        <ul className=" m-4">
           {options[index].map((option, index) => {
-            return optionView(index, option);
+            return optionView(index, option, item.correct_answer);
           })}
-        </div>
+        </ul>
       </div>
     );
   };
 
   var quizBoardList = [];
+
   return (
     <>
       <NavigationBar />
@@ -65,9 +95,10 @@ const Play = (props) => {
         <div className="col-md-10 col-11 mx-auto play-area">
           <div className="play-top pl-3">
             <span>
-              Q 1<span>/20 </span>
+              Q {qNumber}
+              <span>/20 </span>
             </span>
-            Score: 50
+            Score: {score}
             <div className="play-timer">
               <i class="fa fa-clock-o mr-2"></i>
               20
@@ -77,7 +108,7 @@ const Play = (props) => {
           {data.map((item, index) => {
             quizBoardList.push(quizBorad(index, item));
           })}
-          {quizBoardList[0]}
+          {quizBoardList[qNumber - 1]}
         </div>
       </div>
     </>
