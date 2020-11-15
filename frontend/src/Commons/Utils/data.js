@@ -47,12 +47,12 @@ export const topicsData = [
   {
     id: 18,
     name: "Computers",
-    icon: "fa-laptop",
+    icon: "fa-laptop-code",
   },
   {
     id: 19,
     name: "Mathematics",
-    icon: "fa-calculator",
+    icon: "fa-square-root-alt",
   },
   {
     id: 20,
@@ -85,6 +85,11 @@ export const topicsData = [
     icon: "fa-paint-brush",
   },
   {
+    id: 31,
+    name: "Anime & Manga",
+    icon: "fa-fire",
+  },
+  {
     id: 26,
     name: "Celebrities",
     icon: "fa-film",
@@ -102,18 +107,14 @@ export const topicsData = [
   {
     id: 29,
     name: "Comics",
-    icon: "fa-star",
+    icon: "fa-mask",
   },
   {
     id: 30,
     name: "Gadgets",
     icon: "fa-mobile",
   },
-  {
-    id: 31,
-    name: "Anime & Manga",
-    icon: "fa-futbol",
-  },
+
   {
     id: 32,
     name: "Cartoon & Animations",

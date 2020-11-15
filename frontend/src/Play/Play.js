@@ -8,25 +8,39 @@ const Play = (props) => {
   const [isClicked, setIsClicked] = useState("");
   const [score, setScore] = useState(0);
   const [qNumber, setqnumber] = useState(1);
-  const [time, setTime] = useState(20);
+  const [timer, setTimer] = useState(20);
+
+  var timerId;
 
   useEffect(() => {
     setData(props.location.state.quizData);
-
     _setOptions(props.location.state.quizData);
   }, []);
+
+  useEffect(() => {
+    if (timer != 0) {
+      timerId = setTimeout(() => setTimer(timer - 1), 1000);
+    }
+    if (timer === 0) {
+      setqnumber(qNumber + 1);
+      setTimer(20);
+    }
+    return () => {
+      clearTimeout(timerId);
+    };
+  }, [timer]);
+
+  const stopTimer = (id) => {
+    return () => clearTimeout(id);
+  };
 
   const _setOptions = (data) => {
     data.map((item) => {
       var suffledOptions = [];
-
       suffledOptions = options.concat(item.incorrect_answers);
       suffledOptions.push(item.correct_answer);
-
       shuffle(suffledOptions);
       setOptions((options) => [...options, suffledOptions]);
-      // data.options = options;
-      // setData(data);
     });
   };
   const shuffle = (array) => {
@@ -48,7 +62,7 @@ const Play = (props) => {
           isClicked ? (option === correctAns ? "correct disable" : null) : null
         } mt-4`}
       >
-        {option}
+        {decodeHtml(option)}
       </li>
     );
   };
@@ -73,6 +87,7 @@ const Play = (props) => {
     setTimeout(() => {
       setqnumber(qNumber + 1);
       setIsClicked(false);
+      setTimer(20);
     }, 1500);
   };
 
@@ -94,18 +109,18 @@ const Play = (props) => {
   return (
     <>
       <NavigationBar />
-      {console.log("option", data)}
+
       <div className="container">
         <div className="col-md-10 col-11 mx-auto play-area">
           <div className="play-top pl-3">
             <span>
               Q {qNumber}
-              <span>/20 </span>
+              <span>/15 </span>
             </span>
             Score: {score}
             <div className="play-timer">
               <i class="fa fa-clock-o mr-2"></i>
-              20
+              {timer}
             </div>
           </div>
 

@@ -26,9 +26,9 @@
   display:flex;
   align-items: center;
   justify-content: center;
-  text-shadow: 2px 2px #222222;
-  color: #ffffff;
-  font-weight: 600;
+  /* text-shadow: 2px 2px #020202; */
+  color: #000000;
+  font-weight: 500;
   background-image: linear-gradient(to right, rgb(0, 152, 240), rgb(0, 225, 181));
   
  }
