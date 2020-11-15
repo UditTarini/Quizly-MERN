@@ -6,11 +6,11 @@
   height: 15rem;
    
 }
-
-  
 .topic-icon{
   font-size: 3rem;
   color: rgb(92, 92, 92);
+  transition:  all .5s ease-in-out;
+
 }
 .card:hover{
   box-shadow: 2px 13px 15px 0px rgba(0, 0, 0, 0.8);
@@ -21,11 +21,16 @@
 }
 .card:hover> .topic-icon {
   color: rgb(245, 245, 245);
+  text-shadow: 2px 2px 7px #202020;
+  transform: scale(1);
 
 }
+
+
+
 .topic-name{
   font-size: 1.05rem;
-  }
+}
 
 @media only screen and (max-width: 600px){
   .card-body {

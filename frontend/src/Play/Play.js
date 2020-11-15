@@ -5,7 +5,7 @@ import NavigationBar from "../Commons/NavigationBar";
 const Play = (props) => {
   const [data, setData] = useState([]);
   const [options, setOptions] = useState([]);
-  const [ansStatus, setAnsStatus] = useState("");
+  const [isClicked, setIsClicked] = useState("");
   const [score, setScore] = useState(0);
   const [qNumber, setqnumber] = useState(1);
   const [time, setTime] = useState(20);
@@ -42,25 +42,29 @@ const Play = (props) => {
   const optionView = (index, option, correctAns) => {
     return (
       <li
-        onClick={() => handleOptionClick(option, correctAns)}
+        onClick={(e) => handleOptionClick(option, correctAns, e)}
         key={index}
-        className={`play-option ${ansStatus} mt-4`}
+        className={`play-option ${
+          isClicked ? (option === correctAns ? "correct disable" : null) : null
+        } mt-4`}
       >
         {option}
       </li>
     );
   };
 
-  const handleOptionClick = (option, correctAns) => {
-    if (option === correctAns) {
-      setAnsStatus("correct");
-      setScore(score + 5);
+  const handleOptionClick = (option, correctAns, e) => {
+    e.preventDefault();
 
+    if (option === correctAns) {
+      setIsClicked(true);
+      setScore(score + 5);
+      e.currentTarget.className = "play-option correct disable mt-4";
       delayNextQ();
     } else {
-      setAnsStatus("wrong");
+      setIsClicked(true);
       setScore(score - 2);
-
+      e.currentTarget.className = "play-option wrong disable mt-4";
       delayNextQ();
     }
   };
@@ -68,7 +72,7 @@ const Play = (props) => {
   const delayNextQ = () => {
     setTimeout(() => {
       setqnumber(qNumber + 1);
-      setAnsStatus("");
+      setIsClicked(false);
     }, 1500);
   };
 

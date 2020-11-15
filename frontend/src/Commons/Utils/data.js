@@ -111,7 +111,7 @@ export const topicsData = [
   },
   {
     id: 31,
-    name: "Japanese Anime & Manga",
+    name: "Anime & Manga",
     icon: "fa-futbol",
   },
   {

@@ -7,19 +7,28 @@ import {useHistory} from "react-router-dom";
 import "./Topics.css";
 
 const TopicCard = ({icon, name, id}) => {
+  const [isLoading, setisLoading] = useState(false);
+
   var history = useHistory();
+
   const play = (id) => {
-    loadQuiz(id).then((data) =>
+    setisLoading(true);
+    loadQuiz(id).then((data) => {
       history.push("/play", {
         quizData: data.results,
-      })
-    );
+      });
+      setisLoading(false);
+    });
   };
-
   return (
     <>
       <div onClick={() => play(id)} className="card card-body mb-4 text-center">
-        <i className={`fa ${icon} topic-icon my-5`} aria-hidden="true"></i>
+        <i
+          className={`fa ${
+            isLoading ? "fa-spinner fa-spin" : icon
+          } topic-icon my-5`}
+          aria-hidden="true"
+        ></i>
         <h5 className="topic-name mt-3">{name}</h5>
       </div>
     </>
