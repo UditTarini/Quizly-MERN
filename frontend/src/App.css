@@ -30,8 +30,6 @@ input:not([type='checkbox']){
   background:#3f3f3f;
   outline: none;
   box-shadow: -2px 8px 9px 0px rgba(43, 43, 43, 0.85);
-
-
 }
 
 input:not([type='checkbox']):focus{
@@ -83,8 +81,3 @@ input:not([type='checkbox']):focus{
   cursor: pointer;
   text-decoration: underline;
 }
-
-
-
-/*  linear-gradient(to right, rgb(0, 152, 240), rgb(0, 225, 181));
-/* linear-gradient(to right, rgb(6, 255, 243), rgb(10, 145, 255)); */

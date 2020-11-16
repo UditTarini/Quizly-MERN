@@ -2,7 +2,7 @@ import "../App.css";
 import "./Home.css";
 import home_img from "../assets/quizly.png";
 import {Link} from "react-router-dom";
-import NavigationBar from "./Components/NavigationBar";
+import NavigationBar from "../Commons/NavigationBar";
 
 function Home() {
   return (

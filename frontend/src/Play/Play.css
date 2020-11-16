@@ -26,12 +26,51 @@
   display:flex;
   align-items: center;
   justify-content: center;
-  /* text-shadow: 2px 2px #020202; */
   color: #000000;
   font-weight: 500;
   background-image: linear-gradient(to right, rgb(0, 152, 240), rgb(0, 225, 181));
   
  }
+
+ .play-summary{
+  background:#3f3f3f; 
+  padding-bottom: 1rem;
+  text-align: center;
+}
+.summary-msg{
+  margin-top: 20px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-shadow: 2px 2px black;
+  font-family: "Raleway"
+}
+
+.summary-msg > span {
+  color: #01f7ff; 
+}
+
+.play-summary > .play-top{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  
+}
+
+p{
+  margin: 0;
+  padding: 0;
+}
+
+.score-summary{
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+}
+
+
+
 
   .play-board{
     background:#3f3f3f;
@@ -63,20 +102,6 @@
       transition: all 0.2s ease-in-out ;
       
     }
-/* li:nth-child(1){
-  border: none;
-
-      background-color: #3bb78f;
-background-image: linear-gradient(315deg, #3bb78f 0%, #0bab64 74%);
-}
-
-li:nth-child(2){
-  border: none;
-
-  background-color: #ff7878;
-background-image: linear-gradient(315deg, #ff5050 0%, #ff0000 74%);
-
-} */
 
     .correct{
       border: none;
@@ -102,4 +127,5 @@ background-image: linear-gradient(315deg, #ff5050 0%, #ff0000 74%);
       transform: scale(1.01);
     }
   
-  
+ 
+ 

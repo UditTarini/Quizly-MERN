@@ -2,7 +2,7 @@ export const topicsData = [
   {
     id: 9,
     name: "General Knowledge",
-    icon: "fa-info",
+    icon: "fa-brain",
   },
   {
     id: 10,
