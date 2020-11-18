@@ -19,7 +19,10 @@ var user_schema = new Schema(
     },
     salt: String,
     score: [],
-    totalscore: Number,
+    totalscore: {
+      type: Number,
+      default: 0,
+    },
   },
   {
     timestamps: true,

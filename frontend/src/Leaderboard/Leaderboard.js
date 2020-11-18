@@ -1,8 +1,17 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import "./Leaderboard.css";
 import NavigationBar from "../Commons/NavigationBar";
+import {loadLeaderboard} from "../Commons/Utils/apiHelper";
 
 const Leaderboard = () => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    loadLeaderboard().then((data) => {
+      setData(data);
+    });
+  }, []);
+
   return (
     <>
       <NavigationBar />
@@ -17,26 +26,16 @@ const Leaderboard = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Udit</td>
-                <td>125</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Hari Tomat</td>
-                <td>785</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Hari Tomat</td>
-                <td>785</td>
-              </tr>{" "}
-              <tr>
-                <th scope="row">2</th>
-                <td>Hari Tomat</td>
-                <td>785</td>
-              </tr>
+              {console.log(data)}
+              {data.map((item, index) => {
+                return (
+                  <tr key={index}>
+                    <th scope="row">{index + 1}</th>
+                    <td>{item.name}</td>
+                    <td>{item.totalscore}</td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>

@@ -32,3 +32,13 @@ export const saveScore = (value) => {
     })
     .catch((err) => console.log("ERR", err));
 };
+
+export const loadLeaderboard = () => {
+  return fetch(`${base_route}/leaderboard`, {
+    method: "GET",
+  })
+    .then((res) => {
+      return res.json();
+    })
+    .catch((error) => console.log(error));
+};

@@ -116,7 +116,7 @@ const Play = (props) => {
     }, 1500);
   };
 
-  const quizBorad = (index, item) => {
+  const quizBoard = (index, item) => {
     return (
       <div className="play-board" key={index}>
         <p className="play-question m-4">{decodeHtml(item.question)}</p>
@@ -196,7 +196,7 @@ const Play = (props) => {
                 </div>
               </div>
               {data.map((item, index) => {
-                quizBoardList.push(quizBorad(index, item));
+                quizBoardList.push(quizBoard(index, item));
               })}
               {quizBoardList[qNumber > 14 ? 14 : qNumber]}
               <button className="btn-skip" onClick={skipQuestion}>

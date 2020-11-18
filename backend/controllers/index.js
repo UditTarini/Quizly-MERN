@@ -129,3 +129,15 @@ exports.saveScore = (req, res) => {
     });
   }
 };
+
+exports.loadLeaderboard = (req, res) => {
+  User.find({}, (error, user) => {
+    const leaderboard = user;
+    leaderboard
+      .sort((a, b) => {
+        return a.score - b.score;
+      })
+      .reverse();
+    res.send(leaderboard);
+  });
+};
