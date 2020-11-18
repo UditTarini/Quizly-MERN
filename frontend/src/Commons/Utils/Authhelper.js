@@ -28,7 +28,6 @@ export const register = (user) => {
     }
   )
     .then((res) => {
-      console.log(res);
       return res.json();
     })
     .catch((err) => console.log("ERR", err));

@@ -1,6 +1,12 @@
 var express = require("express");
 var router = express.Router();
-var {signout, register, login, isSignedIn} = require("../controllers/auth");
+var {
+  signout,
+  register,
+  login,
+  isSignedIn,
+  saveScore,
+} = require("../controllers");
 const {check} = require("express-validator");
 const User = require("../models/user");
 
@@ -24,5 +30,7 @@ router.post("/login", login);
 
 // read route
 router.get("/signout", signout);
+
+router.post("/score/save", saveScore);
 
 module.exports = router;

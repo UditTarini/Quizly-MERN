@@ -7,7 +7,7 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const path = require("path");
 
-const auth_route = require("./routers/auth");
+const route = require("./routers");
 
 // connection
 
@@ -26,7 +26,7 @@ app.use(cookieParser());
 app.use(cors());
 
 // route
-app.use("/api", auth_route);
+app.use("/api", route);
 
 app.get("/", (req, res) => {
   res.send("Hello from Express!");

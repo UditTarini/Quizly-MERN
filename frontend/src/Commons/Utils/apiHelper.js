@@ -1,3 +1,5 @@
+import {base_route} from "../../backend";
+
 export const loadQuiz = async (id) => {
   return await fetch(
     `https://opentdb.com/api.php?amount=15&category=${id}&type=multiple`
@@ -9,4 +11,24 @@ export const loadQuiz = async (id) => {
       }
       return data;
     });
+};
+
+export const saveScore = (value) => {
+  return fetch(
+    // url
+    `${base_route}/score/save`,
+    {
+      // data for url
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(value),
+    }
+  )
+    .then((res) => {
+      return res.json();
+    })
+    .catch((err) => console.log("ERR", err));
 };

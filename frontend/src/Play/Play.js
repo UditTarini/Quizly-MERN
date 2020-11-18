@@ -2,20 +2,21 @@ import React, {useEffect, useState} from "react";
 import "./Play.css";
 import NavigationBar from "../Commons/NavigationBar";
 import {isAuthenticated} from "../Commons/Utils/authHelper";
+import {saveScore} from "../Commons/Utils/apiHelper";
 
 const Play = (props) => {
   const [data, setData] = useState([]);
   const [options, setOptions] = useState([]);
   const [isClicked, setIsClicked] = useState("");
   const [score, setScore] = useState(0);
+  const [totScore, setTotScore] = useState(0);
   const [qNumber, setqnumber] = useState(14);
   const [timer, setTimer] = useState(20);
   const [isRunning, setIsRunning] = useState(true);
   const [isOver, setIsOver] = useState(false);
   const [wrong, setWrong] = useState(0);
-  const [attempted, setAttempted] = useState(1);
+  const [attempted, setAttempted] = useState(0);
   const [correct, setCorrect] = useState(0);
-
   var timerId;
   const {user} = isAuthenticated();
 
@@ -32,16 +33,27 @@ const Play = (props) => {
       setqnumber(qNumber + 1);
       setTimer(20);
     }
-    if (qNumber === 15) {
-      setTimer(0);
-      setIsRunning(false);
-      setIsOver(true);
-    }
 
     return () => {
       clearTimeout(timerId);
     };
   }, [timer]);
+
+  useEffect(() => {
+    if (qNumber === 15) {
+      saveScore({name: user.name, score: score}).then((data) => {
+        console.log("data", data);
+        if (data.error) {
+          console.log(data.error);
+        } else {
+          setTotScore(data);
+          setTimer(0);
+          setIsRunning(false);
+          setIsOver(true);
+        }
+      });
+    }
+  }, [qNumber]);
 
   const _setOptions = (data) => {
     data.map((item) => {
@@ -78,17 +90,19 @@ const Play = (props) => {
 
   const handleOptionClick = (option, correctAns, e) => {
     setAttempted(attempted + 1);
+    setIsClicked(true);
+
     e.preventDefault();
-    if (option === correctAns) {
-      setIsClicked(true);
+    if (option == correctAns) {
       setScore(score + 5);
       setCorrect(correct + 1);
+
       e.currentTarget.className = "play-option correct disable mt-4";
       delayNextQ();
     } else {
-      setIsClicked(true);
       setScore(score - 2);
       setWrong(wrong + 1);
+
       e.currentTarget.className = "play-option wrong disable mt-4";
       delayNextQ();
     }
@@ -97,7 +111,7 @@ const Play = (props) => {
   const delayNextQ = () => {
     setTimeout(() => {
       setqnumber(qNumber + 1);
-      setIsClicked(false);
+      setIsClicked(qNumber === 14 ? true : false);
       setTimer(20);
     }, 1500);
   };
@@ -115,6 +129,11 @@ const Play = (props) => {
     );
   };
 
+  const skipQuestion = () => {
+    setqnumber(qNumber + 1);
+    setTimer(20);
+  };
+
   const gameSummary = () => {
     return (
       <div className="play-summary">
@@ -124,7 +143,7 @@ const Play = (props) => {
             ? score < 5
               ? "You tried your best"
               : "Welldone"
-            : "Excellent"}{" "}
+            : "Excellent"}
           <span> {user.name}</span>
         </p>
 
@@ -145,8 +164,8 @@ const Play = (props) => {
             <p>{correct}</p>
             <p>{wrong}</p>
             <hr />
-            <p className="score">{score}</p>
-            <p className="score">{score}</p>
+            <p>{score}</p>
+            <p>{totScore}</p>
           </div>
         </div>
       </div>
@@ -167,7 +186,7 @@ const Play = (props) => {
             <>
               <div className="play-top pl-3">
                 <span>
-                  Q {qNumber}
+                  Q {qNumber === 15 ? qNumber : qNumber + 1}
                   <span>/15 </span>
                 </span>
                 Score: {score}
@@ -179,7 +198,10 @@ const Play = (props) => {
               {data.map((item, index) => {
                 quizBoardList.push(quizBorad(index, item));
               })}
-              {quizBoardList[qNumber - 1]}
+              {quizBoardList[qNumber > 14 ? 14 : qNumber]}
+              <button className="btn-skip" onClick={skipQuestion}>
+                Skip
+              </button>
             </>
           )}
         </div>

@@ -2,6 +2,7 @@ const User = require("../models/user");
 var jwt = require("jsonwebtoken");
 var expressJwt = require("express-jwt");
 const {validationResult} = require("express-validator");
+const e = require("express");
 
 exports.register = (req, res) => {
   const errors = validationResult(req);
@@ -105,12 +106,26 @@ exports.isAuthenticated = (req, res, next) => {
   next();
 };
 
-exports.isAdmin = (req, res, next) => {
-  let checker = req.profile.role === 1;
-  if (!checker) {
-    return res.status(403).json({
-      error: "Access denied, you are not an admin",
+exports.saveScore = (req, res) => {
+  const {name, score} = req.body;
+
+  if (name) {
+    User.findOne({name}, (error, user) => {
+      if (error) {
+        console.log(error);
+      } else {
+        user.score.push(score);
+
+        user.totalscore = user.score.reduce((a, b) => a + b, 0);
+
+        user.save((error, user) => {
+          if (error) {
+            return res.status(400).json("Not able to save score");
+          } else {
+            return res.json(user.totalscore);
+          }
+        });
+      }
     });
   }
-  next();
 };

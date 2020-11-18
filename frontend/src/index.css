@@ -19,7 +19,7 @@ a{
   text-decoration: none;
 }
 
-.btn:focus {
+button:focus {
   outline: 0;
   box-shadow:none;
 }
