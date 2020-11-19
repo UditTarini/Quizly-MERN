@@ -8,7 +8,6 @@ import {register} from "../Commons/Utils/authHelper";
 function Register() {
   const [values, setValues] = useState({
     name: "",
-
     password: "",
     error: "",
     success: false,

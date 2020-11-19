@@ -65,11 +65,14 @@ function Login() {
                 type="text"
                 onChange={handleOnChange("name")}
               ></input>
+
               <input
                 placeholder="Password"
                 type="password"
                 onChange={handleOnChange("password")}
+                className="password"
               ></input>
+
               <button onClick={onSubmit} className="btn btn_login">
                 LOGIN
               </button>

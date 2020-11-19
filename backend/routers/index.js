@@ -23,6 +23,15 @@ router.post(
         return user.length == 0;
       })
       .withMessage("already exits"),
+    check("password")
+      .isLength({min: 8})
+      .withMessage(
+        "should contain a capital letter, a number\nand should be 8 chars long"
+      )
+      .matches(/[A-Z]+/)
+      .withMessage(
+        "should contain a capital letter, a number\nand should be 8 chars long"
+      ),
   ],
   register
 );
