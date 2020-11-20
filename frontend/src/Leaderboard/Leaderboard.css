@@ -40,3 +40,11 @@ tbody tr:nth-child(odd) {
   background: linear-gradient(to right, rgb(0, 152, 240), rgb(0, 225, 181));
 
 }
+
+.fa-spinner{
+ color: #fff;
+ font-size: 2rem;
+ margin-left: 170%;
+ margin-top: 50%;
+}
+
