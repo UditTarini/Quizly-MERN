@@ -2,4 +2,6 @@
 /package-lock.json
 .git
 /.git
-/
+bfg-1.13.0.jar
+.env
+/.env
