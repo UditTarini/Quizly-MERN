@@ -7,6 +7,7 @@ var {
   isSignedIn,
   saveScore,
   loadLeaderboard,
+  loadUserInfo,
 } = require("../controllers");
 const {check} = require("express-validator");
 const User = require("../models/user");
@@ -39,6 +40,7 @@ router.post(
 router.post("/login", login);
 
 router.post("/score/save", saveScore);
+router.post("/userinfo", loadUserInfo);
 
 // read route
 router.get("/signout", signout);

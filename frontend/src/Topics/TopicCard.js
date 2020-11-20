@@ -1,9 +1,6 @@
 import React, {useState} from "react";
-import {Link, Redirect} from "react-router-dom";
 import {loadQuiz} from "../Commons/Utils/apiHelper";
-import Play from "../Play";
 import {useHistory} from "react-router-dom";
-
 import "./Topics.css";
 
 const TopicCard = ({icon, name, id}) => {
@@ -20,6 +17,7 @@ const TopicCard = ({icon, name, id}) => {
       setisLoading(false);
     });
   };
+
   return (
     <>
       <div onClick={() => play(id)} className="card card-body mb-4 text-center">

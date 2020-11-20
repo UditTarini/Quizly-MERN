@@ -42,3 +42,19 @@ export const loadLeaderboard = () => {
     })
     .catch((error) => console.log(error));
 };
+
+export const getUserInfo = (name) => {
+  return fetch(`${base_route}/userinfo`, {
+    // data for url
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(name),
+  })
+    .then((res) => {
+      return res.json();
+    })
+    .catch((error) => console.log(error));
+};

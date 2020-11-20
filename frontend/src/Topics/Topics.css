@@ -32,6 +32,15 @@
   font-size: 1.05rem;
 }
 
+.greet-msg{
+  color: aliceblue;
+  font-size: 1.5rem;
+}
+
+.score-msg{
+  font-size: 1rem;
+}
+
 @media only screen and (max-width: 600px){
   .card-body {
     padding: 0rem;

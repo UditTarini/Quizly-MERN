@@ -3,6 +3,7 @@ var jwt = require("jsonwebtoken");
 var expressJwt = require("express-jwt");
 const {validationResult} = require("express-validator");
 const e = require("express");
+const {use} = require("../routers");
 
 exports.register = (req, res) => {
   const errors = validationResult(req);
@@ -139,5 +140,18 @@ exports.loadLeaderboard = (req, res) => {
       })
       .reverse();
     res.send(leaderboard);
+  });
+};
+
+exports.loadUserInfo = (req, res) => {
+  const {name} = req.body;
+
+  User.findOne({name}, (error, user) => {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log(user.totalscore);
+      return res.json(user.totalscore);
+    }
   });
 };

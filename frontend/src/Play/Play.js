@@ -3,6 +3,7 @@ import "./Play.css";
 import NavigationBar from "../Commons/NavigationBar";
 import {isAuthenticated} from "../Commons/Utils/authHelper";
 import {saveScore} from "../Commons/Utils/apiHelper";
+import Modal from "./Modal";
 
 const Play = (props) => {
   const [data, setData] = useState([]);
@@ -10,13 +11,16 @@ const Play = (props) => {
   const [isClicked, setIsClicked] = useState("");
   const [score, setScore] = useState(0);
   const [totScore, setTotScore] = useState(0);
-  const [qNumber, setqnumber] = useState(14);
+  const [qNumber, setqnumber] = useState(0);
   const [timer, setTimer] = useState(20);
   const [isRunning, setIsRunning] = useState(true);
   const [isOver, setIsOver] = useState(false);
   const [wrong, setWrong] = useState(0);
   const [attempted, setAttempted] = useState(0);
   const [correct, setCorrect] = useState(0);
+  const [closed, setClosed] = useState(false);
+  const [showModal, setShowModal] = useState(true);
+
   var timerId;
   const {user} = isAuthenticated();
 
@@ -26,23 +30,25 @@ const Play = (props) => {
   }, []);
 
   useEffect(() => {
-    if (timer != 0 && isRunning) {
-      timerId = setTimeout(() => setTimer(timer - 1), 1000);
-    }
-    if (timer === 0 && isRunning) {
-      setqnumber(qNumber + 1);
-      setTimer(20);
+    console.log(false);
+    if (closed) {
+      if (timer != 0 && isRunning) {
+        timerId = setTimeout(() => setTimer(timer - 1), 1000);
+      }
+      if (timer === 0 && isRunning) {
+        setqnumber(qNumber + 1);
+        setTimer(20);
+      }
     }
 
     return () => {
       clearTimeout(timerId);
     };
-  }, [timer]);
+  }, [timer, closed]);
 
   useEffect(() => {
     if (qNumber === 15) {
       saveScore({name: user.name, score: score}).then((data) => {
-        console.log("data", data);
         if (data.error) {
           console.log(data.error);
         } else {
@@ -185,6 +191,13 @@ const Play = (props) => {
           ) : (
             <>
               <div className="play-top pl-3">
+                <Modal
+                  show={showModal}
+                  close={() => {
+                    setShowModal(false);
+                    setClosed(true);
+                  }}
+                />
                 <span>
                   Q {qNumber === 15 ? qNumber : qNumber + 1}
                   <span>/15 </span>
