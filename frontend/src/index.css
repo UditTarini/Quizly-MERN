@@ -27,7 +27,3 @@ button:focus {
 .btn:hover {
   color: #ffffff;
 }
-
-input{
-  text-transform:capitalize
-}
