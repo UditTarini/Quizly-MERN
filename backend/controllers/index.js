@@ -133,25 +133,24 @@ exports.saveScore = (req, res) => {
 
 exports.loadLeaderboard = (req, res) => {
   User.find({}, (error, user) => {
+    console.log("topp");
     const leaderboard = user;
     leaderboard
       .sort((a, b) => {
-        return a.score - b.score;
+        return a.totalscore - b.totalscore;
       })
       .reverse();
-    res.send(leaderboard);
+    return res.send(leaderboard);
   });
 };
 
 exports.loadUserInfo = (req, res) => {
-  console.log("fajdfnak");
   const {name} = req.body;
 
   User.findOne({name}, (error, user) => {
     if (error) {
-      console.log(error);
+      return res.status(400).json("Not able to fetch score");
     } else {
-      console.log(user.totalscore);
       return res.json(user.totalscore);
     }
   });
