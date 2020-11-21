@@ -144,6 +144,7 @@ exports.loadLeaderboard = (req, res) => {
 };
 
 exports.loadUserInfo = (req, res) => {
+  console.log("fajdfnak");
   const {name} = req.body;
 
   User.findOne({name}, (error, user) => {

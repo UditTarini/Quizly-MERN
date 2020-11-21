@@ -10,7 +10,9 @@ const Topics = () => {
   const {user} = isAuthenticated();
 
   useEffect(() => {
-    getUserInfo({name: user.name}).then((data) => setScore(data));
+    getUserInfo({name: user.name}).then((data) => {
+      setScore(data.toString());
+    });
   }, []);
 
   return (
