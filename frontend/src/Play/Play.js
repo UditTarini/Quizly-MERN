@@ -30,7 +30,6 @@ const Play = (props) => {
   }, []);
 
   useEffect(() => {
-    console.log(false);
     if (closed) {
       if (timer != 0 && isRunning) {
         timerId = setTimeout(() => setTimer(timer - 1), 1000);
@@ -50,7 +49,6 @@ const Play = (props) => {
     if (qNumber === 15) {
       saveScore({name: user.name, score: score}).then((data) => {
         if (data.error) {
-          console.log(data.error);
         } else {
           setTotScore(data);
           setTimer(0);
@@ -137,7 +135,7 @@ const Play = (props) => {
 
   const skipQuestion = () => {
     setqnumber(qNumber + 1);
-    setTimer(20);
+    setTimer(qNumber === 14 ? timer : 20);
   };
 
   const gameSummary = () => {
