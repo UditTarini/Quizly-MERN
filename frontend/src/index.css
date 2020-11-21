@@ -24,3 +24,10 @@ button:focus {
   box-shadow:none;
 }
 
+.btn:hover {
+  color: #ffffff;
+}
+
+input{
+  text-transform:capitalize
+}
