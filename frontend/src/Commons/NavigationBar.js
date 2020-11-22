@@ -79,7 +79,7 @@ const NavigationBar = ({history}) => {
                   className="nav-link text-warning"
                   onClick={() => {
                     signout(() => {
-                      history.push("/login");
+                      history.push("/auth");
                     });
                   }}
                 >

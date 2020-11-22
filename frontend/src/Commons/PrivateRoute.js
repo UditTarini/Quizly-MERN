@@ -12,7 +12,7 @@ export default function PrivateRoute({component: Component, ...rest}) {
         ) : (
           <Redirect
             to={{
-              pathname: "/home",
+              pathname: "/auth",
               state: {from: props.location},
             }}
           />

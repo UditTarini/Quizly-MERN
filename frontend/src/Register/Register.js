@@ -9,10 +9,11 @@ function Register() {
     name: "",
     password: "",
     error: "",
+    loading: false,
     success: false,
   });
 
-  const {name, password, error, success} = values;
+  const {name, password, error, loading, success} = values;
 
   const handleOnChange = (field) => (event) => {
     setValues({...values, error: false, [field]: event.target.value});
@@ -20,7 +21,7 @@ function Register() {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    setValues({...values, error: false});
+    setValues({...values, error: false, loading: true});
     register({name, password})
       .then((data) => {
         if (data.error) {
@@ -33,6 +34,7 @@ function Register() {
             name: "",
             password: "",
             error: "",
+            loading: true,
             success: true,
           });
         }
@@ -55,7 +57,7 @@ function Register() {
     <>
       <NavigationBar />
       <div className="container">
-        <div className="col-md-6 col-sm-11 col-11 mx-auto">
+        <div className="col-md-6 col-lg-3 col-sm-11 col-11 mx-auto">
           <form>
             <div className="center-content column">
               <h1 className="text-white mb-5">Create an account</h1>
@@ -74,7 +76,7 @@ function Register() {
               ></input>
 
               <button className="btn btn_home reg" onClick={onSubmit}>
-                Register
+                {loading ? <i class="fas fa-spinner fa-pulse"></i> : "REGISTER"}
               </button>
             </div>
           </form>

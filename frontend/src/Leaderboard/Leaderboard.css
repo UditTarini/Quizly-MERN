@@ -48,3 +48,11 @@ tbody > .fa-spinner{
  margin-top: 50%;
 }
 
+@media only screen and (max-width: 400px) {
+  tbody > tr > td {
+    font-size: 0.9rem;  
+}
+th{
+  font-size: 0.9rem;
+}
+}

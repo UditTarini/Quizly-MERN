@@ -55,7 +55,7 @@ function Login() {
     <>
       <NavigationBar />
       <div className="container">
-        <div className="col-md-6 mx-auto">
+        <div className="col-md-6 col-lg-3 col-sm-11 col-11 mx-auto">
           <form>
             <div className="center-content column ">
               <h1 className="text-white mb-5">Log In</h1>
@@ -71,9 +71,8 @@ function Login() {
                 onChange={handleOnChange("password")}
                 className="password"
               ></input>
-
               <button onClick={onSubmit} className="btn btn_home login">
-                LOGIN
+                {loading ? <i class="fas fa-spinner fa-pulse"></i> : "LOGIN"}
               </button>
             </div>
           </form>
