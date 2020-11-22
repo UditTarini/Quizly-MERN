@@ -1,7 +1,6 @@
 import {useState} from "react";
 import {Link} from "react-router-dom";
 import "../App.css";
-import "./Register.css";
 import NavigationBar from "../Commons/NavigationBar";
 import {register} from "../Commons/Utils/authHelper";
 
@@ -74,7 +73,7 @@ function Register() {
                 onChange={handleOnChange("password")}
               ></input>
 
-              <button className="btn btn_register" onClick={onSubmit}>
+              <button className="btn btn_home reg" onClick={onSubmit}>
                 Register
               </button>
             </div>

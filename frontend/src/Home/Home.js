@@ -18,10 +18,10 @@ function Home() {
             />
 
             <div className="mt-3 align-row">
-              <Link className="btn btn_register mr-4" to="/register">
+              <Link className="btn btn_home reg mr-4" to="/register">
                 REGISTER
               </Link>
-              <Link className="btn btn_login" to="/login">
+              <Link className="btn btn_home login" to="/login">
                 LOGIN
               </Link>
             </div>

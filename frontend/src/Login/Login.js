@@ -1,6 +1,5 @@
 import {Redirect} from "react-router-dom";
 import "../App.css";
-import "./Login.css";
 import NavigationBar from "../Commons/NavigationBar";
 import {
   login,
@@ -58,7 +57,7 @@ function Login() {
       <div className="container">
         <div className="col-md-6 mx-auto">
           <form>
-            <div className="center-content column">
+            <div className="center-content column ">
               <h1 className="text-white mb-5">Log In</h1>
               <input
                 placeholder="Name"
@@ -73,7 +72,7 @@ function Login() {
                 className="password"
               ></input>
 
-              <button onClick={onSubmit} className="btn btn_login">
+              <button onClick={onSubmit} className="btn btn_home login">
                 LOGIN
               </button>
             </div>

@@ -10,6 +10,12 @@
   .quizly:hover{
     transform: scale(1.02); 
   }
+  @media only screen and (max-width: 530px){
+    .quizly{
+      font-size: 1.7rem;
+    }
+  }
+
   
   nav {
     box-shadow: -2px 8px 15px 0px rgba(36, 36, 36, 0.85);
